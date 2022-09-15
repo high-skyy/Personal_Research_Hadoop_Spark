@@ -4,6 +4,8 @@
           
         
 * ## What is data lake and data warehouse  
+
+<br></br>
   + #### Data Lake
     - Data Lake는 대규모의 다양한 Raw data를 기본 형식으로 저장하는 데이터 Repository 유형이다.
     - Data Lake를 사용하면 모든 데이터가 보존되며, Storage에 저장하기 전에 제거되거나 필터링되지 않습니다.
