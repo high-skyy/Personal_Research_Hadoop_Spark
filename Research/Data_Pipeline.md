@@ -1,6 +1,8 @@
 # Data Pipeline
 > 데이터 파이프라인(Data Pipeline)은 다양한 데이터 소스에서 원시 데이터(raw data)를 수집한 다음 분석을 위해
 > 데이터레이크(data lake) 또는 데이터 웨어하우스(data warehouse)와 같은 데이터 저장소로 이전하는 방법이다.  
+
+
 <br></br>
 * ## What is data lake and data warehouse  
   + #### Data Lake
