@@ -6,7 +6,7 @@
 ### What is data lake and data warehouse  
 
 
-- Data Lake   
+- **Data Lake**   
 
   
     - Data Lake는 대규모의 다양한 Raw data를 기본 형식으로 저장하는 데이터 Repository 유형이다.
@@ -18,7 +18,7 @@
 > Data Lake는 Raw data를 모아 놓은 Repository
 
 
-- Data Warehouse     
+- **Data Warehouse**     
 
 
   - 분석 가능한 정보의 중앙 리포지토리. 데이터는 Transaction system, Relational Database 등 으로 부터 보통 정기적으로 데이터 웨어하우스로 들어갑니다.
@@ -28,7 +28,7 @@
 > Data Warehouse는 정제된 데이터를 모아 놓은 Repository + 추가 적인 기능
 
 
-- Data flow  
+- **Data flow**  
 
 ![화면 캡처 2022-09-15 165012](https://user-images.githubusercontent.com/105041834/190346946-840a7a17-0b8d-4e82-8bcf-5db8248d1258.png)
 
