@@ -1,3 +1,0 @@
-# Personal research for project
-
-##
