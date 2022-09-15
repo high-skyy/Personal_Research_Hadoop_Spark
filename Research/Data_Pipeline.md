@@ -31,8 +31,8 @@
 - Data flow  
 
 ![화면 캡처 2022-09-15 165012](https://user-images.githubusercontent.com/105041834/190346946-840a7a17-0b8d-4e82-8bcf-5db8248d1258.png)
-  
-  
+
+<br></br>
 ## Reference
 - [Reference](https://www.ibm.com/kr-ko/topics/data-pipeline)
 - [Reference](https://www.redhat.com/ko/topics/data-storage/what-is-a-data-lake)
