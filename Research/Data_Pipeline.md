@@ -4,7 +4,9 @@
 
 <br></br>
 ### What is data lake and data warehouse  
+> Data Lake는 Raw Data를 모아 놓은 Repository
 
+> Data Warehouse는 정제된 데이터를 모아 놓은 Repository + 추가적인 기능
 
 - **Data Lake**   
 
@@ -15,17 +17,11 @@
     - Data lake는 데이터를 사용하고 엑세스할 수 있도록 관리가 필요하다. -> 엑세스 불가능하면 (data swamp)가 된다.
 
 
-> Data Lake는 Raw data를 모아 놓은 Repository
-
-
 - **Data Warehouse**     
 
 
   - 분석 가능한 정보의 중앙 리포지토리. 데이터는 Transaction system, Relational Database 등 으로 부터 보통 정기적으로 데이터 웨어하우스로 들어갑니다.
   - 의사 결정권자는 비즈니스 인텔리전스(BI) 도구, SQL 클라이언트 및 기타 분석 응용 프로그램을 통해 데이터를 액세스합니다.
-
-
-> Data Warehouse는 정제된 데이터를 모아 놓은 Repository + 추가 적인 기능
 
 
 - **Data flow**  
