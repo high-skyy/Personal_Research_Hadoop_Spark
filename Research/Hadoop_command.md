@@ -12,6 +12,17 @@ $ hadoop          # 도움말이 요청됨 (인자가 없을 경우)
 $ hadoop fs       # 서브 시스템의 모든 며령어에 대한 설명을 볼 수 있따.
 ```
 
+## hadoop command line
+
+```
+$ hdfs namenode -format         # datanode 초기화
+$ start-all.sh                  # namenode, datanode, nodemanager, secondarynamenode, yarn daemon 실행
+# 이거 대신에 start-dfs.sh 하고 start-yarn.sh 하는게 더 좋다?
+$ hdfs dfsadmin -report         # 현재 상태에 대해서 알려줌
+$ jps                           # type of command to check all the hadoop daemons
+```
+
+
 ### 디렉토리 조회 및 생성
 > hadoop fs는 hadoop을 포함한 여러 파일 시스템과 상호작용할 수 있는 일반적인 명령이며, hdfs dfs는 HDFS에만 해당하는 명령어이다.
 ```
@@ -37,6 +48,11 @@ $ hadoop fs -get [HDFS 경로] [로컬 경로]      # hdfs에 있는 파일을 l
 stop-all.sh         # 하둡을 정상적인 방법으로 종료
 start-all.sh        # 다시 정상적인 방법으로 실행
 ```
+- 2022-09-19 21:10:49,010 WARN hdfs.DataStreamer: DataStreamer Exception org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/wordcountPJ/shakespeare/histories/kingrichardiii._COPYING_ could only be written to 0 of the 1 minReplication nodes. There are 0 datanode(s) running and 0 node(s) are excluded in this oper
+- 해결 : /tmp 에 들어가서 전 파일 삭제하고 -> hadoop namenode -format 시키면 됨
+
+- local에서 hdfs로 파일을 옮기고 싶을 경우에는 반드시 hadoop 시작 명령어 사용 (hdfs 사용하면 안됨 local이라)
+
 ## Reference
 [Reference](https://12bme.tistory.com/152#:~:text=%ED%95%98%EB%91%A1%20HDFS%20%EA%B8%B0%EB%B3%B8%20%EC%82%AC%EC%9A%A9%EB%B2%95,%EC%95%84%EB%9E%98%20%EB%AA%85%EB%A0%B9%EC%96%B4%EB%A5%BC%20%EC%8B%A4%ED%96%89%ED%95%A9%EB%8B%88%EB%8B%A4.&text=hadoop%20%EB%AA%85%EB%A0%B9%EC%96%B4%EB%8A%94%20%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20%EC%84%9C%EB%B8%8C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9C%BC%EB%A1%9C%20%EC%84%B8%EB%B6%84%ED%99%94%20%EB%90%98%EC%96%B4%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.)
 [Reference](https://seunghuni96.tistory.com/109)

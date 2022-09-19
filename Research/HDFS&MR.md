@@ -57,9 +57,12 @@ Reducer의 output이 이제 HDFS에 저장이 된다.
 
 - 맵 리듀스 시스템 -> Client, JobTracker(NameNode), TaskTracker(Datanode)  
 - Client : 분석하고자 하는 데이터를 Job의 형태로 JobTracker에게 전달
-- JobTracker : Hadoop Cluter에 등록된 전체 job을 스케줄링하고 모니터링
+- JobTracker : Hadoop Cluter에 등록된 전체 job을 스케줄링하고 모니터링(프로세스 / 작업을 알맞는 tasktracker에서 할당합니다.) 실패 시 다른 TaskTracker에게 재할당 합니다.
 - TaskTracker : DataNode에서 실행되는 데몬이고, 사용자고 설정한 map-reduce program을 실행하며  
 JobTracker로부터 작업을 요청받고 요청받은 맵과 리듀스 개수만큼 맵 task와 reduce task를 생성.
+
+
+
 
 ### Hadoop Cluster
 #### Concept
@@ -154,7 +157,6 @@ Map Reduce는 여러 노드에 태스크를 분배하는 방법으로 각 노드
 이후, Map 작업을 수행한 각각의 블럭의 결과 정보를 합치는 작업(Reduce)를 수행하게 되는 방식이다.  
 하둡에서는 계산시, 큰 파일을 블럭단위로 나누고 모든 블럭은 같은 Map 작업을 수행하고 이후 Reduce 작업을 수행하게 됩니다.
 
-## Hadoop Components
 
 ### Map Reduce
 MapReduce는 Hadoop 클러스터의 데이터를 처리하기 위한 시스템으로 총 2개(Map, Reduce)의 phase로 구성됨.  
@@ -164,6 +166,8 @@ Map과 Reduce 사이에는 shuffle과 sort라는 스테이지가 존재합니다
 
 DFS(Distributed File system)에서 수행되는 MapReduce 작업이 끝나면 HDFS에 파일이 써지고,  
 Map Reduce 작업이 시작할때는 HDFS로 부터 파일을 가져오는 작업이 수행됩니다.
+
+
 
 ## 추가
 [Reference](https://icecello.tistory.com/33)
