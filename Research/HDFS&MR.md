@@ -26,7 +26,7 @@
 ### 도식표
 ![map-reduce](https://user-images.githubusercontent.com/105041834/190896278-9a42f106-fd1a-4cec-afbb-8581a8117f88.jpg)  
 
-### Brief explanation & curren frameworks
+### Brief explanation & current frameworks
 Map-Reduce의 경우는 대량의 machine들이 data를 process 할 수 있도록 하는 processing framework이다.  
 Hadoop 은 Map-Reduce를 이용해 Hadoop cluster에 분산되어 있는 데이터를 process한다.  
 Data가 여러 노드에 있는 경우 program을 복사해서 data가 있는 곳에 복사를 해 주는 framework가 필요하다. (이게 map-reduce)
@@ -57,7 +57,7 @@ Reducer의 output이 이제 HDFS에 저장이 된다.
 
 - 맵 리듀스 시스템 -> Client, JobTracker(NameNode), TaskTracker(Datanode)  
 - Client : 분석하고자 하는 데이터를 Job의 형태로 JobTracker에게 전달
-- JobTracker : Hadoop Cluter에 등록된 전체 job을 스케줄링하고 모니터링(프로세스 / 작업을 알맞는 tasktracker에서 할당합니다.) 실패 시 다른 TaskTracker에게 재할당 합니다.
+- JobTracker : Hadoop Cluster에 등록된 전체 job을 스케줄링하고 모니터링(프로세스 / 작업을 알맞는 tasktracker에서 할당합니다.) 실패 시 다른 TaskTracker에게 재할당 합니다.
 - TaskTracker : DataNode에서 실행되는 데몬이고, 사용자고 설정한 map-reduce program을 실행하며  
 JobTracker로부터 작업을 요청받고 요청받은 맵과 리듀스 개수만큼 맵 task와 reduce task를 생성.
 
