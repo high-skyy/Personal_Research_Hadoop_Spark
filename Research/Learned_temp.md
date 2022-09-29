@@ -1,5 +1,13 @@
 # 기본 개념
 
+## Configure files
+.CFG 또는 .CONFIG 파일 확장명이 있는 파일은 다양한 프로그램에서 각자의 소프트웨어에 특정한 설정을 저장하는데 사용되는 구성파일이다.  
+> XML 기반 형식 등이 있음.
+- 개인 설정을 위해 setup 파일 바로 뒤에 파일 끝에 추가.
+  - setup.exe.config
+
+- [Reference](https://ko.eyewated.com/cfg-%EB%B0%8F-config-%ED%8C%8C%EC%9D%BC%EC%9D%B4%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9E%85%EB%8B%88%EA%B9%8C/)
+
 ## 환경변수
 > %변수명% 이러한 형식을 가지고 있다.  
 
@@ -32,4 +40,4 @@
 
 ### 나중에 작성
 - [Reference](https://velog.io/@modsiw/%EA%B8%B0%ED%83%80-%ED%95%98%EB%91%A1-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95-%ED%95%98%EB%A9%B4%EC%84%9C-%EB%AA%B0%EB%9E%90%EB%8D%98-%EA%B3%BC%EC%A0%95-%EA%B0%9C%EB%85%90-%EB%AA%85%EB%A0%B9%EC%96%B4)
-- [Hadoop 명령어](https://hadoop.apache.org/docs/r3.1.1/hadoop-project-dist/hadoop-common/ClusterSetup.html))
+- [Hadoop 명령어](https://hadoop.apache.org/docs/r3.1.1/hadoop-project-dist/hadoop-common/ClusterSetup.html)

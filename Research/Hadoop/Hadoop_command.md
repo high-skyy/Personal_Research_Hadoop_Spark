@@ -1,6 +1,5 @@
 # Basic Instructions
 
-
 ## 하둡(hdfs)기본 사용법
 시스템과의 상호작용은 hadoop 이라는 명령어를 통해서 합니다. 만약 터미널을 열고, 인자 없이 명령어를 실행하면 도움말이 나옵니다.
 > 대부분 rmdir cat linux와 비슷한데 앞에 -만 붙여주면 된다.
@@ -42,5 +41,9 @@ $ gunzip -c access_log.gz \ | hadoop fs -put [hdfs 상의 파일 위치]  # 압�
 $ hadoop fs -get [HDFS 경로] [로컬 경로]      # hdfs에 있는 파일을 local로 옮기고 싶을 경우
 ```
 
+
+
+
 ## Reference
-[Reference](https://12bme.tistory.com/152#:~:text=%ED%95%98%EB%91%A1%20HDFS%20%EA%B8%B0%EB%B3%B8%20%EC%82%AC%EC%9A%A9%EB%B2%95,%EC%95%84%EB%9E%98%20%EB%AA%85%EB%A0%B9%EC%96%B4%EB%A5%BC%20%EC%8B%A4%ED%96%89%ED%95%A9%EB%8B%88%EB%8B%A4.&text=hadoop%20%EB%AA%85%EB%A0%B9%EC%96%B4%EB%8A%94%20%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20%EC%84%9C%EB%B8%8C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9C%BC%EB%A1%9C%20%EC%84%B8%EB%B6%84%ED%99%94%20%EB%90%98%EC%96%B4%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.)
+- [Reference](https://12bme.tistory.com/152#:~:text=%ED%95%98%EB%91%A1%20HDFS%20%EA%B8%B0%EB%B3%B8%20%EC%82%AC%EC%9A%A9%EB%B2%95,%EC%95%84%EB%9E%98%20%EB%AA%85%EB%A0%B9%EC%96%B4%EB%A5%BC%20%EC%8B%A4%ED%96%89%ED%95%A9%EB%8B%88%EB%8B%A4.&text=hadoop%20%EB%AA%85%EB%A0%B9%EC%96%B4%EB%8A%94%20%EC%97%AC%EB%9F%AC%EA%B0%9C%EC%9D%98%20%EC%84%9C%EB%B8%8C%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9C%BC%EB%A1%9C%20%EC%84%B8%EB%B6%84%ED%99%94%20%EB%90%98%EC%96%B4%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.)
+- [Reference](https://hadoop.apache.org/docs/r3.3.4/hadoop-project-dist/hadoop-common/ClusterSetup.html)

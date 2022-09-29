@@ -21,22 +21,6 @@ Reducer도 Mapper의 입출력과 비슷한 입출력 과정을 거친다.
 MR 프레임워크와 Mapper 혹은 Reducer로 사용될 프로그램 사이에서는 Key와 Value를 탭(\t) 문자로 붙여서 전달하고 전달 받는다.  
 탭 문자가 텍스트 라인에 없다면 라인 전체가 Key이고 Value는 null인 것으로 간주된다.
 
-### OS 환경에 차이에 따라 발생하는 오류
-> vi/vim 으로 만든 python file의 ^M을 다 지우자  
-
-Window에 있는 파일을 그대로 Linux 또는 Unix 환경으로 복사해서 붙이게 되면 Control M(^M) 캐릭터 들이 생기게 된다.  
-^M 인 경우에는 non printable character이기 때문에 찾기가 힘들다.  
-이런 것을 다 지워줘야 linux 또는 Unix 환경에서 Error가 발생하지 않는다.
-```
-$ vi -b filename
-$ vim -b filename 
-# 위에 2개로 편집기를 열어주자 -b 없으면 안보인다. (왜냐하면 ^M 자체가 ascii 코드 상 글자가 안됨)
-$ cat filename | sed 's/바꾸고자 하는 문자열/바꾼 이후 문자열/option/' filename > newfilename
-# 이러면 모든 걸 삭제한 후 파일로 새로 만들 수 있다.
-```
-
-### Help for making streaming environment
-
 
 ## Reference
 - [Reference](https://earthconquest.tistory.com/245)
