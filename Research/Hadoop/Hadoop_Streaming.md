@@ -31,19 +31,13 @@ Window에 있는 파일을 그대로 Linux 또는 Unix 환경으로 복사해서
 $ vi -b filename
 $ vim -b filename 
 # 위에 2개로 편집기를 열어주자 -b 없으면 안보인다. (왜냐하면 ^M 자체가 ascii 코드 상 글자가 안됨)
-#:%s/\r//g                          # 이러면 모든 걸 다 삭제 할 수 있다. 끝나고 wq쓰기
 $ cat filename | sed 's/바꾸고자 하는 문자열/바꾼 이후 문자열/option/' filename > newfilename
 # 이러면 모든 걸 삭제한 후 파일로 새로 만들 수 있다.
 ```
 
-### 밑의 오류 발생시 참고
-pipemapred.waitoutputthreads(): subprocess failed with code 1  
-
-[참고](https://earthconquest.tistory.com/245)
-
 ### Help for making streaming environment
-[Reference](https://earthconquest.tistory.com/245)
+
 
 ## Reference
-[Reference](https://www.databricks.com/kr/glossary/hadoop-cluster#:~:text=%ED%95%98%EB%91%A1%20%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%8A%94%20%EB%B6%84%EC%82%B0%ED%98%95,%ED%86%B5%ED%95%A9%ED%95%98%EC%97%AC%20%ED%99%9C%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.)
-[Reference](https://www.adminschoice.com/how-to-remove-m-in-linux-unix#:~:text=Control%20M%20(%20%5EM)%20characters,pasted%20from%20a%20windows%20machine.)
+- [Reference](https://earthconquest.tistory.com/245)
+- [Reference](https://hbase.tistory.com/349#:~:text=%ED%95%98%EB%91%A1%20%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D%EC%9D%80%20%EC%9C%A0%EB%8B%89%EC%8A%A4%20%EC%8A%A4%ED%8A%B8%EB%A6%BC,Reducer%EB%A1%9C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4.)

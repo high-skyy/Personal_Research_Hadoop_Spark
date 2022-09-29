@@ -66,11 +66,6 @@ Map Reduce 작업이 시작할때는 HDFS로 부터 파일을 가져오는 작�
 
 
 
-## 추가
-[Reference](https://icecello.tistory.com/33)
-
 ## Reference
-[Reference](https://12bme.tistory.com/153?category=737765)  
-[Reference](https://hbase.tistory.com/349#:~:text=%ED%95%98%EB%91%A1%20%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%B0%8D%EC%9D%80%20%EC%9C%A0%EB%8B%89%EC%8A%A4%20%EC%8A%A4%ED%8A%B8%EB%A6%BC,Reducer%EB%A1%9C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4.)
-[Reference](https://www.geeksforgeeks.org/hadoop-mapreduce-data-flow/)
-[Reference](https://opentutorials.org/course/2908/17055)
+- [Reference](https://www.geeksforgeeks.org/hadoop-mapreduce-data-flow/)
+- [Reference](https://opentutorials.org/course/2908/17055)

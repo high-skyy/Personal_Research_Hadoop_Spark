@@ -69,3 +69,7 @@ NameNode daemon은 반드시 항상 실행되고 있어야 합니다. 만약, Na
 - 한번 저장한 데이터는 수정할 수 없고, 읽기만 가능해서 데이터 무결정성 유지
 - 데이터 수정은 불가능 하지만 파일이동, 삭제, 복할 수 있는 인터페이스를 제공
 - 데이터 노드는 주기적으로 네임노드에서 블록 리포트를 전송하고 이를 통해 네임노드는 데이터 노드가 정사 작동하는지 확인.
+
+## Reference
+- [Reference](https://opentutorials.org/course/2908/17055)
+- [Reference](https://12bme.tistory.com/153?category=737765) 
