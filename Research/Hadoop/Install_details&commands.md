@@ -58,7 +58,14 @@ $ $HADOOP_HOME/bin/mapred --daemon stop historyserver
 ```
 - [Reference](https://hadoop.apache.org/docs/r3.3.4/hadoop-project-dist/hadoop-common/ClusterSetup.html)
 
-
+## hdfs-site.xml
+> Configurations for datanode & namenode
+- Configurations for namenode
+  - dfs.namenode.name.dir : Path on the local filesystem where the NameNode stores the namespace and transactions logs perisitently
+  - dfs.hosts /: List of permitted/excluded DataNodes
+  - dfs.blocksize : 268435456
+- Configurations for datanode
+  - dfs.datanode.data.dir
 
 ## Reference
 [Reference](https://hadoop.apache.org/docs/r3.1.1/hadoop-project-dist/hadoop-common/ClusterSetup.html)

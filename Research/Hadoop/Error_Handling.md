@@ -49,3 +49,14 @@ $ hadoop fs -put [파일이름] [hdfs에서의 파일위치]      # local에서 
 $ vi -b [file name]  # vi 편집기로 해당하는 .py 파일을 열어서 ^M 문자들을 삭제하자.
 :%s/\r//g                          # Regular expression으로 삭제 할 수 있다. 끝나고 wq쓰기
 ```
+
+- Issue : ERROR: Cannot set priority of journalnode process 6520
+  - Reason
+    - Configuration에서 보면 journal node는 /dfs/journalnode이라는 파일에 있는데 해당 파일에 대해 user(hadoop)이 권한이 없으면 오류가 발생
+  - Solved
+  - [Reference](https://stackoverflow.com/questions/56052827/error-cannot-set-priority-of-journalnode-process-6520)
+```
+$ ls -l /         # 권한 확인하고
+$ chown (user 이름) (해당 directory)           # 파일 주인 바꿔 주기
+$ chgrp (소유 group) (해당 directory)         # 파일 
+```
