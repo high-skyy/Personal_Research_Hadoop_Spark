@@ -50,7 +50,7 @@ $ vi -b [file name]  # vi 편집기로 해당하는 .py 파일을 열어서 ^M �
 :%s/\r//g                          # Regular expression으로 삭제 할 수 있다. 끝나고 wq쓰기
 ```
 
-- Issue : ERROR: Cannot set priority of journalnode process 6520
+- Issue : Cannot set priority of journalnode process 6520
   - Reason
     - Configuration에서 보면 journal node는 /dfs/journalnode이라는 파일에 있는데 해당 파일에 대해 user(hadoop)이 권한이 없으면 오류가 발생
   - Solved
@@ -59,4 +59,15 @@ $ vi -b [file name]  # vi 편집기로 해당하는 .py 파일을 열어서 ^M �
 $ ls -l /         # 권한 확인하고
 $ chown (user 이름) (해당 directory)           # 파일 주인 바꿔 주기
 $ chgrp (소유 group) (해당 directory)         # 파일 
+```
+
+- Issue : java.net bind exception address already in use
+  - Reason
+    - log file에서 확인할 수 있음 실제로 해당 포트가 이미 사용되고 있는 경우가 있고 없는 경우도 있다.
+  - Solved
+  - [Reference](https://community.cloudera.com/t5/Support-Questions/Failed-to-start-namenode-java-net-BindException-Port-in-use/td-p/228570)
+```
+$ netstat -tnlpa | grep (사용되고 있는 port 번호)
+$ kill -9 (해당하는 process id)
+# netstat을 했음에도 불구하고 해당 port를 사용하는 process가 나오지 않을 경우에는 재부팅을 해야 한다.
 ```

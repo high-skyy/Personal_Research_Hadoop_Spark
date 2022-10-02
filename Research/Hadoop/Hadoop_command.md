@@ -3,15 +3,53 @@
 ## 하둡(hdfs)기본 사용법
 시스템과의 상호작용은 hadoop 이라는 명령어를 통해서 합니다. 만약 터미널을 열고, 인자 없이 명령어를 실행하면 도움말이 나옵니다.
 > 대부분 rmdir cat linux와 비슷한데 앞에 -만 붙여주면 된다.
-### Exploring HDFS
-시스템과의 상호작용은 hadoop 이라는 명령어를 통해서 합니다.
-1. 하둡 프로그램에서 HDFS와 관련된 서브 시스템은 FsShell 이라고 한다. 이 서브 시스템은 fs 명령어로 실행할 수 있다.
-```
-$ hadoop          # 도움말이 요청됨 (인자가 없을 경우)
-$ hadoop fs       # 서브 시스템의 모든 며령어에 대한 설명을 볼 수 있따.
-```
 
-## hadoop command line
+## Hadoop Startup
+> Hadoop cluster를 시작하기 위해서는 HDFS와 YARN cluster가 모두 필요하다.
+
+```
+# HDFS를 처음 실행 시 반드시 formatt 되어야 한다.
+$ $HADOOP_HOME/bin/hdfs namenode -format
+
+# HDFS NameNode 실행
+$ $HADOOP_HOME/bin/hdfs --daemon start namenode
+
+# HDFS DataNode 실행
+$ $HADOOP_HOME/bin/hdfs --daemon start datanode
+
+# 만약 /etc/hadoop/worders 과 ssh trusted access가 configured 되면 모든 HDFS의 프로세스를 아래 명령어로 실행 가능.
+$ $HADOOP_HOME/sbin/start-dfs.sh
+
+# YARN 실행 (지정된 ResourceManager)
+$ $HADOOP_HOME/bin/yarn --daemon start resourcemanager
+
+# Start NodeManager on each 지정된 host
+$ $HADOOP_HOME/bin/yarn --daemon start nodemanager
+
+# Start a standalone WebAppProxy server. Run on the WebAppProxy server as yarn. If multiple servers are used with load balancing it should be run on each of them
+$ $HADOOP_HOME/bin/yarn --daemon start proxyserver
+
+# /etc/hadoop/worders과 ssh trusted access is configured 아래와 같은 명령어로 한번에 실행 가능
+$ $HADOOP_HOME/sbin/start-yarn.sh
+
+# MapReduce JobHistory Server 시작
+$ $HADOOP_HOME/bin/mapred --daemon start history server
+```
+- [Reference](https://hadoop.apache.org/docs/r3.3.4/hadoop-project-dist/hadoop-common/ClusterSetup.html)
+
+## Hadoop Shutdown
+```
+$ $HADOOP_HOME/bin/hdfs --daemon stop namenode
+$ $HADOOP_HOME/bin/hdfs --daemon stop datanode
+$ $HADOOP_HOME/sbin/stop-dfs.sh
+$ $HADOOP_HOME/bin/yarn --daemon stop resourcemanager
+$ $HADOOP_HOME/bin/yarn stop proxyserver
+$ $HADOOP_HOME/bin/mapred --daemon stop historyserver
+```
+- [Reference](https://hadoop.apache.org/docs/r3.3.4/hadoop-project-dist/hadoop-common/ClusterSetup.html)
+
+
+## hadoop basic command
 
 ```
 $ hdfs namenode -format         # datanode 초기화
@@ -20,7 +58,6 @@ $ start-all.sh                  # namenode, datanode, nodemanager, secondaryname
 $ hdfs dfsadmin -report         # 현재 상태에 대해서 알려줌
 $ jps                           # type of command to check all the hadoop daemons
 ```
-
 
 ### 디렉토리 조회 및 생성
 > hadoop fs는 hadoop을 포함한 여러 파일 시스템과 상호작용할 수 있는 일반적인 명령이며, hdfs dfs는 HDFS에만 해당하는 명령어이다.
@@ -39,6 +76,7 @@ $ gunzip -c access_log.gz \ | hadoop fs -put [hdfs 상의 파일 위치]  # 압�
 # 명령어 A | 명령어 B         를 할 경우 명령어 A를 실행한 뒤 명령어 B를 실행한다.
 
 $ hadoop fs -get [HDFS 경로] [로컬 경로]      # hdfs에 있는 파일을 local로 옮기고 싶을 경우
+$ hdfs dfs -copyFromLocal [로컬 파일 경로] [HDFS 경로]
 ```
 
 
