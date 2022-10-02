@@ -58,14 +58,87 @@ $ $HADOOP_HOME/bin/mapred --daemon stop historyserver
 ```
 - [Reference](https://hadoop.apache.org/docs/r3.3.4/hadoop-project-dist/hadoop-common/ClusterSetup.html)
 
-## hdfs-site.xml
-> Configurations for datanode & namenode
-- Configurations for namenode
-  - dfs.namenode.name.dir : Path on the local filesystem where the NameNode stores the namespace and transactions logs perisitently
-  - dfs.hosts /: List of permitted/excluded DataNodes
-  - dfs.blocksize : 268435456
-- Configurations for datanode
-  - dfs.datanode.data.dir
+## core-site.xml
+> etc/hadoop/core-site.xml
 
+- **personal settings**
+  - fs.defaultFS : hdfs://mycluster
+  - ha.zookeeper.quorum : namenode1 :2181, rmnode1:2181, datanode1: 2181
+
+- fs.defaultFS
+  - value : NameNode URI
+  - hdfs://host:port/
+  - The default path prefix used by the Hadoop FS client when none is given
+    - 만약 Hadoop FS client에게 기본 default 주소가 주어지지 않으면 해당 주소를 사용한다.
+  - Optionally, you may now configure the default path for Hadoop clients to use the new HA- enabled logical URI. If you used "mycluster" as the nameservice Id earlier, this will be the value of the authority portion of all of your HDFS paths.
+    - Default path를 이제는 HA-enbabled logical URI로 사용이 가능하다.
+> Datanode가 namenode의 주소를 받는데 여기를 본다 (using RPC) [Reference](https://community.cloudera.com/t5/Support-Questions/difference-between-fs-defaultFS-and-dfs-namenode-http/td-p/214958#:~:text=The%20fs.,create%20the%20distributed%20file%20system.)
+
+## hdfs-site.xml
+> 설정 순서가 중요치 않다.
+
+- dfs.nameservices (nameservice ID)
+  - **personal settings** : mycluster
+  - The logical name for this nameservice
+    - Choose a logical name for this nameservice, for example "mycluster", and use this logical name for the value of this config option The name you choose is arbitrary. It will be used both for configuration and as the authority component of absolute HDFS paths in the cluster
+    - Logical 이름을 nameservice에게 붙인다. 나중에 configuration과 authority component of HDFS 절대 경로에 사용된다.
+
+- dfs.ha.namenodes.mycluster(NameNode IDs)
+  - **personal settings** : nn1,rn1
+  - Unique identifiers for each NameNode in the nameservice
+  - DataNode가 모든 NameNode를 결정하는데 사용된다.
+
+- dfs.client.failover.proxy.provider.mycluster
+  - **personal settings** : org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider
+  - The Java class that HDFS clients use to contact the Active Namenode
+    - DFS Java class를 DFS Client에게 알려줌으로 써 현재 어떤 NameNode가 active하고 어떤 NameNode가 현재 Client의 요청을 받는지 알려준다.
+
+- dfs.namenode.rpc-address.mycluster.nn1
+  - **personal settings**: namenode1:8020
+  - The fully-qualified RPC address for each NameNode to listen on
+  - 이전에 정했던 NameNode의 ID들의 전체 주소와 IPC port를 정해준다. (실제 hostname과 rpc address)
+- dfs.namenode.rpc-address.mycluster.rn1
+  - **personal settings**: rmnode1:8020
+
+- dfs.namenode.http-address.mycluster.nn1
+  - **personal settings** : namenode1:9870
+  - The fully-qualified HTTP addresses for each NameNode to listen on
+  - NameNode의 HTTP server가 listen 할 address를 설정한다.
+- dfs.namenode.http-address.mycluster.rn1
+  - **personal settings** : rmnode1:9870
+
+- dfs.namenode.shared.edits.dir
+  - **personal settings** :qjournal://namenode1:8485;rmnode1:8485;datanode1:8485/mycluster
+  - The location of the shared storage directory
+  - This is where one configures the path to the remote shared edits directory which the Standby NameNodes use to stay up-to-date with all the file system changes the Active NameNode makes. You should only configure one of these directories. This directory should be mounted r/w on the NameNode machines. The value of this setting should be the absolute path to this directory on the NameNode machines
+  - rmnode와 active한 datanode가 서로 공유하는 storage directory이다. update에 대해서 rmnode가 따라 올 수 있도록 한다.
+
+- dfs.ha.automatic-failover.enabled
+  - **personal settings** : true
+- dfs.ha.fencing.methods
+  - **personal settings** : shell(/bin/true)
+  - 
+
+- dfs.namenode.name.dir
+  - /dfs/namenode
+- dfs.datanode.name.dir
+  - /dfs/datanode
+- dfs.journalnode.edits.dir
+  - /dfs/journalnode
+
+
+
+
+
+
+- dfs.ha.fencing.ssh.private-key-files
+  - /home/hadoop/.ssh/id_rsa
+
+
+
+
+### Configuration
 ## Reference
 [Reference](https://hadoop.apache.org/docs/r3.1.1/hadoop-project-dist/hadoop-common/ClusterSetup.html)
+[Reference](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HDFSHighAvailabilityWithNFS.html)
+[Reference](https://www.edureka.co/community/1401/meaning-of-fs-defaultfs-property-in-core-site-xml-in-hadoop)
