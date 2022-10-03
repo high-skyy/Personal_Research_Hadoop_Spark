@@ -25,7 +25,7 @@ chmod OGW file이름
 [참고](https://brownbears.tistory.com/161)
 
 ## 기본 명령어
-```commandline
+```
 cd /OO      # 절대 경로
 cd OO       # 상대 경로 (순차 적으로 왔다갔다 가능)
 cd ..       # 상위 디렉토리로 이동
@@ -67,28 +67,60 @@ which                       # 명령어 위치 확인
 W                           # 현재 서버에 접속한 사용자의 접속 정보 및 작업정보를 확인하는 명령어
 ```
 
-## Cat
+## 메타 문자
+- ~ : 홈 디렉토리 / . : 현재 디렉토리 / .. : 상위 디렉토리 / # : 주석 / $ : 쉘 변수
+- & : 백그라운드 작업 / ? : 한 문자 와일드 카드
+- (*) : 임의의 문자열을 나타내는 특수 문자로 흔히 사용하는 특수 문자 중 하나입니다. (0개 이상의 문자로 대체 된다.)
+  - 주로 여러 파일의 이름을 하나하나 작업하기 힘들때 이름을 간단하게 표시하는데 사용한다.
+  - 명령을 실행할 때 파일의 이름을 적어야 하는 자리에 (*)을 사용하면 모든 파일을 나타낸다.
+- ; : 쉘 구분 명령자
+  - 연결된 명령을 왼쪽부터 차례로 실행
+- | : 파이프
+  - 왼쪽 명령의 실행결과를 오른쪽 명령의 입력으로 전달한다.
+- < , > : 표준 출력을 바꾸는 특수문자
+  - 파일을 바꿀 때 ex) echo "안녕하십니까" > aaa
+- << , >> : 파일에 내용을 추가하는 역할로 활용
+  - 파일에 append 시켜준다.
+
+- [Reference](https://hack-cracker.tistory.com/26)
+
+## rm
+deleting files
+> rm (option) (filename)
+
 ```
-Cat                         # 텍스트 파일 내용을 표준 출력장치로 출력
-Cat + > + 파일명               # 파일 생성 명령어
-Cat + >> + 파일명              # 파일에 내용 추가
-!Cat                        # 가장 최근에 사용한 cat를 재실행
+$ rm -r (filename)
+$ rm -rf *          # Force deletion of everything in the current directory/working directory
+$ rm -rf .          # Force deletion of current folder and subfolders
 ```
 
+## (*)
+
+
 ## 퍼미션
+### chmod
 > chmod + **(퍼미션 값)** : 파일 권한 변경  
 ```
-U : User
-G : Group
-O : Others
-a : all
-r : read
-w : write
-x : execute
-+ : 권한 추가
-- : 권한 제거
-= : 해당권한만 부여, 나머지 제거
+$ chmod u+w [File]              # 파일 소유 사용자에게 쓰기 권한 추가.
+$ chmod g+w [File]              # 파일 소유 그룹에게 쓰기 권한 추가.
+$ chmod u=rwx [File]            # 파일 소유 사용자에게 읽기, 쓰기, 실행 권한 추가.
+$ chmod 755
 ```
+- U : User / G : Group / O : Others / a : all
+- r : read(4) / w : write(2) / x : execute (1)
+- + : 권한 추가 / - : 권한 제거 / = : 해당권한만 부여, 나머지 제거
+- option
+  - (-R) : 지정한 모드를 파일과 디렉토리에 대해 재귀적으로 적용
+  - (-f) : 에러 메시지 출력하지 않음
+- [Reference](https://recipes4dev.tistory.com/175)
+
+### chown, chgrp
+> chown {소유권자}:{그룹식별자} {소유권을 변경하고 싶은 파일명 or 디렉토리명}
+```
+chown aaa:bbb test.sh
+chown -R aaa:bbb test.sh        # 하위 디렉토리 까지 변경 옵션 : -R
+```
+- [Reference](https://araikuma.tistory.com/117)
 
 ## 파일 복사(CP)
 > cp [복사할 원본 경로][목적지 경로]
@@ -97,7 +129,7 @@ cp etd/passwd .(현재 디렉토리)
 ```
 
 ## linux 전역 변수 설정
-```commandline
+```
 PATH = $PATH:$HOME/.local/bin:$HOME/bin     # PATH의 값 밑에 HOME/.local/bin추가 또 그 밑에 HOME/bin 추가
 $PATH       # 원래 PATH가 가지고 있는 값
 ```
