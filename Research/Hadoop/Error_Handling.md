@@ -71,3 +71,20 @@ $ netstat -tnlpa | grep (사용되고 있는 port 번호)
 $ kill -9 (해당하는 process id)
 # netstat을 했음에도 불구하고 해당 port를 사용하는 process가 나오지 않을 경우에는 재부팅을 해야 한다.
 ```
+
+- Issue : WebAppProxy not in jps
+  - Reason
+    - Configuartion file에 WebAppProxy 주소를 입력하지 않았음
+  - Solved
+    - yarn-site.xml -> yarn.web-proxy.address : 0.0.0.0:8089
+  - [Reference](https://tdoodle.tistory.com/entry/Hadoop-Namenode-HA-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0?category=815463)
+
+- Issue : pinc -c 2 -> result : Name or service not known
+  - Reason
+  - Solved
+  - [Reference](https://intrepidgeeks.com/tutorial/linux-ping-wwwbaiducom-name-or-service-not-known)
+```
+$ vi /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 114.114.114.114
+```
