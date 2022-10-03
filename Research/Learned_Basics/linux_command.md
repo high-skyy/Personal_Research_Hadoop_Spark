@@ -81,7 +81,6 @@ W                           # 현재 서버에 접속한 사용자의 접속 정
   - 파일을 바꿀 때 ex) echo "안녕하십니까" > aaa
 - << , >> : 파일에 내용을 추가하는 역할로 활용
   - 파일에 append 시켜준다.
-
 - [Reference](https://hack-cracker.tistory.com/26)
 
 ## rm
