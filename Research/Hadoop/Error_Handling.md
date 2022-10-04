@@ -88,3 +88,33 @@ $ vi /etc/resolv.conf
 nameserver 8.8.8.8
 nameserver 114.114.114.114
 ```
+
+- Issue : There are 0 datanodes running ...
+  - Reason
+    - 전에 사용하던 node의 정보들을 tmp file에 저장이 되어 있어 나중에 이를 reference하기 때문이다.
+    - Solved
+  - [Reference](https://stackoverflow.com/questions/26545524/there-are-0-datanodes-running-and-no-nodes-are-excluded-in-this-operation)
+```
+rm -rf /tmp/*         # su root인 상태에서
+```
+
+- Issue : namenode not appearing on jps on namenode and rmnode
+  - Reason
+    - Format을 안해 주었기 때문이다. Namenode의 format과 rmnode의 format은 다르다.
+  - Solved
+  - [Reference](https://spidyweb.tistory.com/272?category=910416)
+```
+$ hadoop namenode -format
+$ $HADOOP_HOME/bin/hdfs namenode -bootstrapStandby
+```
+
+- Issue : httpfs error Operation category READ is not supported in state standby
+  - Reason
+    - Namenode가 standbynode로 변하게 되어 hdfs에 접근할 수 없게 됨(su root 인 상태에서 hadoop namenode format 해줬을 때 발생했음)
+  - Solved
+```
+# 재부팅 후
+$ hadoop namenode -format       # su hadoop인 상태에서
+```
+
+- Current issue : spark web UI 접근이 불가능 함 (ERR_ADD ...)
