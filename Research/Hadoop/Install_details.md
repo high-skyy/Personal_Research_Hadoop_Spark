@@ -17,11 +17,8 @@ Hadoop scripts 조절 가능 (bin/ ) directory of distribution에서
 ## core-site.xml
 > etc/hadoop/core-site.xml
 
-- **personal settings**
-  - fs.defaultFS : hdfs://mycluster
-  - ha.zookeeper.quorum : namenode1 :2181, rmnode1:2181, datanode1: 2181
-
 - fs.defaultFS
+  - **personal settings** : hdfs://mycluster
   - value : NameNode URI
   - hdfs://host:port/
   - The default path prefix used by the Hadoop FS client when none is given
@@ -30,8 +27,33 @@ Hadoop scripts 조절 가능 (bin/ ) directory of distribution에서
     - Default path를 이제는 HA-enbabled logical URI로 사용이 가능하다.
 > Datanode가 namenode의 주소를 받는데 여기를 본다 (using RPC) [Reference](https://community.cloudera.com/t5/Support-Questions/difference-between-fs-defaultFS-and-dfs-namenode-http/td-p/214958#:~:text=The%20fs.,create%20the%20distributed%20file%20system.)
 
+
 ## hdfs-site.xml
 > 설정 순서가 중요치 않다.
+
+- dfs.client.failover.proxy.provider.mycluster
+  - **personal settings** : org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider
+  - The Java class that HDFS clients use to contact the Active Namenode
+    - DFS Java class를 DFS Client에게 알려줌으로 써 현재 어떤 NameNode가 active하고 어떤 NameNode가 현재 Client의 요청을 받는지 알려준다.
+    
+- dfs.namenode.name.dir
+  - **personal settings** : /hadoopdata/dfs/namenode
+  - Value
+    - Path on the local filesystem where the NameNode stores the namespace and transactions logs persistently
+  - Notes
+    - If this is a comma-delimited list of directories then the name table is replicated in all of the directories, for redundancy
+
+- dfs.datanode.name.dir
+  - **personal settings** : /hadoopdata/dfs/datanode
+  - Value
+    - Comma seperated list of paths on the local filesystem of a DataNode where it should store its blocks
+  - Notes
+    - Comma-delimited list of directories -> data will be stored in all named directories
+
+- dfs.journalnode.edits.dir
+  - **personal settings** : /hadoopdata/dfs/journalnode
+  - The path where the JournalNode daemon will store its local state (edits and other local state used by JournalNodes will be stored)
+  - Redundancy for this data is provided by running multiple separate JournalNodes
 
 - dfs.nameservices (nameservice ID)
   - **personal settings** : mycluster
@@ -40,20 +62,15 @@ Hadoop scripts 조절 가능 (bin/ ) directory of distribution에서
     - Logical 이름을 nameservice에게 붙인다. 나중에 configuration과 authority component of HDFS 절대 경로에 사용된다.
 
 - dfs.ha.namenodes.mycluster(NameNode IDs)
-  - **personal settings** : nn1,rn1
+  - **personal settings** : namenode1, rmnode1
   - Unique identifiers for each NameNode in the nameservice
   - DataNode가 모든 NameNode를 결정하는데 사용된다.
 
-- dfs.client.failover.proxy.provider.mycluster
-  - **personal settings** : org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider
-  - The Java class that HDFS clients use to contact the Active Namenode
-    - DFS Java class를 DFS Client에게 알려줌으로 써 현재 어떤 NameNode가 active하고 어떤 NameNode가 현재 Client의 요청을 받는지 알려준다.
-
-- dfs.namenode.rpc-address.mycluster.nn1
+- dfs.namenode.rpc-address.mycluster.namenode1
   - **personal settings**: namenode1:8020
   - The fully-qualified RPC address for each NameNode to listen on
   - 이전에 정했던 NameNode의 ID들의 전체 주소와 IPC port를 정해준다. (실제 hostname과 rpc address)
-- dfs.namenode.rpc-address.mycluster.rn1
+- dfs.namenode.rpc-address.mycluster.rmnode1
   - **personal settings**: rmnode1:8020
 
 - dfs.namenode.http-address.mycluster.nn1
@@ -75,12 +92,6 @@ Hadoop scripts 조절 가능 (bin/ ) directory of distribution에서
   - **personal settings** : shell(/bin/true)
   - 
 
-- dfs.namenode.name.dir
-  - /dfs/namenode
-- dfs.datanode.name.dir
-  - /dfs/datanode
-- dfs.journalnode.edits.dir
-  - /dfs/journalnode
 
 
 
