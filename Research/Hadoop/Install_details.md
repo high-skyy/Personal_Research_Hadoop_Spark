@@ -27,6 +27,9 @@ Hadoop scripts 조절 가능 (bin/ ) directory of distribution에서
     - Default path를 이제는 HA-enbabled logical URI로 사용이 가능하다.
 > Datanode가 namenode의 주소를 받는데 여기를 본다 (using RPC) [Reference](https://community.cloudera.com/t5/Support-Questions/difference-between-fs-defaultFS-and-dfs-namenode-http/td-p/214958#:~:text=The%20fs.,create%20the%20distributed%20file%20system.)
 
+- ha.zookeeper.quorum
+  - **personal settings** : namenode1:2181,rmnode1:2181,datanode1:2181
+  - This lists the host-port pairs running the ZooKeeper service
 
 ## hdfs-site.xml
 > 설정 순서가 중요치 않다.
@@ -73,38 +76,78 @@ Hadoop scripts 조절 가능 (bin/ ) directory of distribution에서
 - dfs.namenode.rpc-address.mycluster.rmnode1
   - **personal settings**: rmnode1:8020
 
-- dfs.namenode.http-address.mycluster.nn1
+- dfs.namenode.http-address.mycluster.namenode1
   - **personal settings** : namenode1:9870
   - The fully-qualified HTTP addresses for each NameNode to listen on
   - NameNode의 HTTP server가 listen 할 address를 설정한다.
-- dfs.namenode.http-address.mycluster.rn1
+- dfs.namenode.http-address.mycluster.rmnode1
   - **personal settings** : rmnode1:9870
 
 - dfs.namenode.shared.edits.dir
   - **personal settings** :qjournal://namenode1:8485;rmnode1:8485;datanode1:8485/mycluster
-  - The location of the shared storage directory
-  - This is where one configures the path to the remote shared edits directory which the Standby NameNodes use to stay up-to-date with all the file system changes the Active NameNode makes. You should only configure one of these directories. This directory should be mounted r/w on the NameNode machines. The value of this setting should be the absolute path to this directory on the NameNode machines
-  - rmnode와 active한 datanode가 서로 공유하는 storage directory이다. update에 대해서 rmnode가 따라 올 수 있도록 한다.
+  - The URI which identifies the group of JournalNodes where the NameNodes will write/read edits
+  - This is where one configures the addresses of the JournalNodes which provide the shared edits storage, written to by the Active nameNode and read by the Standby NameNode to stay up-to-date with all the file system changes the Active NameNode makes
+    - 공유하는 edit storage를 가지고 있는 Journal Node의 address (Active nameNode가 write Standby NameNode가 최신화)
 
 - dfs.ha.automatic-failover.enabled
   - **personal settings** : true
 - dfs.ha.fencing.methods
-  - **personal settings** : shell(/bin/true)
-  - 
-
-
-
-
-
-
-
+  - **personal settings** : sshfence
+  - A list of scripts or Java classes which will be used to fence the Active NameNode during a failover
+  - When using the Quorum Journal Manager, only one NameNode will ever be allowed to write to the JournalNodes, so there is no potential for corrupting the file.
+  - sshfence : SSHes to the target node and uses fuser to kill the process listening on the service's TCP port. In order for this fencing option to work, it must be able to SSH to the target node without provicing a passphrase. Thus, one must also configure the below option
 - dfs.ha.fencing.ssh.private-key-files
-  - /home/hadoop/.ssh/id_rsa
+  - **personal settings** : /home/hadoop/.ssh/id_rsa
 
-## namenode(web)
-```
-http://(namenode ip):9870
-```
+## yarn-site.xml
+- yarn.nodemanager.aux-services
+  - **personal settings** : mapreduce_shuffle
+  - Shuffle service that needs to be set for Map Reduce applications
+
+- yarn.nodemanager.aux-services.mapreduce_shuffle.class
+  - **personal settings** : org.apache.hadoop.mapred.ShuffleHandler
+
+- yarn.nodemanager.local-dirs
+  - **personal settings** : /hadoopdata/yarn/system/nm-local-dir
+  - Value
+    - Comma-separated list of paths on the local filesystem where intermediate data is writeen
+
+- yarn.resourcemanager.hostname
+  - **personal settings** : rmnode1
+  - ResourceManager host
+
+- yarn.resourcemanager.address
+  - **personal settings** : rmnode1:8032
+  - (ResourceManager host : port) for clients to submit jobs.
+
+- yarn.application.classpath
+
+## 정리
+- zookeeper-service
+  - namenode1:2181,rmnode1:2181,datanode1:2181
+- dfs.namenode.name.dir
+  - /hadoopdata/dfs/namenode
+- dfs.datanode.name.dir
+  - /hadoopdata/dfs/datanode
+- dfs.journalnode.edits.dir
+  - /hadoopdata/dfs/journalnode
+- dfs.namenode.rpc-address.mycluster.namenode1
+  - namenode1:8020
+- dfs.namenode.rpc-address.mycluster.rmnode1
+  - rmnode1:8020
+- dfs.namenode.http-address.mycluster.namenode1
+  - namenode1:9870
+- dfs.namenode.http-address.mycluster.rmnode1
+  - rmnode1:9870
+- dfs.namenode.shared.edits.dir
+  - qjournal://namenode1:8485;rmnode1:8485;datanode1:8485/mycluster
+- yarn.nodemanager.local-dirs
+  - /hadoopdata/yarn/system/nm-local-dir
+- yarn.resourcemanager.hostname
+  - rmnode1
+- yarn.resourcemanager.address
+  - rmnode1:8032
+
 
 ## 리소스 관리자
 ```
