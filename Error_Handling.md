@@ -117,4 +117,27 @@ $ $HADOOP_HOME/bin/hdfs namenode -bootstrapStandby
 $ hadoop namenode -format       # su hadoop인 상태에서
 ```
 
-- Current issue : spark web UI 접근이 불가능 함 (ERR_ADD ...)
+- issue : Cannot access spark web UI
+  - Reason
+    - Configuration에 WebProxyAddress를 직접 입력해서
+  - Solved
+    - Configuration에서 WebProxyAddress를 삭제(default : resource manager)
+
+- Issue : java.io.IOException no space left on device
+  - Reason
+    - 메모리의 부족 과거 캐쉬(데이터)를 tmp file에서 참조함
+  - Solved
+    - tmp file에 있는 내용들을 제거
+
+- Issue : java.lang.ClassNotFoundException: org.apache.spark.deploy
+  - Reason
+    - Configuration에 오타
+  - Solved
+    - spark.history.provider : org.apache.spark.deploy.history.FsHistoryProvider
+
+- Issue : "Exception in thread "main" org.apache.spark.SparkException: Application finished with failed status"
+  - Reason
+    - root인 상태에서 namenode format을 해 버려서 hadoop이 접근 권한이 없는 파일이 생김
+  - Solved
+    - 해당하는 파일의 권한을 hadoop으로 바꿔줌
+
