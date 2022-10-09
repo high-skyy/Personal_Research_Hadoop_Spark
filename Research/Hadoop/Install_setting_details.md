@@ -1,4 +1,13 @@
-# Install_file_details 
+# Install_setting_details 
+
+## Network
+
+## Hadoop 에서의 설정
+- Adapter1: NAT adapter는 guestOS(새로 생성한 가상서버)가 HostOS(Local PC의 OS)의 IP를 통해 외부 인터넷에 연결을 해준다.
+  - 하지만 guestOS간의 통신이 불가능하다.
+- Adapter2: Host 전용 Adapter -> 외부 인터넷과는 단절되어 있지만 구축한 guest OS 간의 통신이 가능하다.
+- 두 Adapter를 사용해서 guest -> 외부 인터넷, guest -> guest통신이 가능하게 해준다.
+> 하둡은 분산 처리 시스템이기 때문에 각 guestOS간의 통신이 원활이 이루어져야 한다.
 
 ## Configure file
 > 각자의 소프트웨어에 대해 특정한 설정을 저장하는데 사용된다.
