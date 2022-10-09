@@ -1,4 +1,4 @@
-# Install_setting_details 
+# Install_setting_configuration_details 
 
 ## Security 설정
 - Selinux : disabled
