@@ -117,4 +117,5 @@ $ $HADOOP_HOME/bin/hdfs namenode -bootstrapStandby
 $ hadoop namenode -format       # su hadoop인 상태에서
 ```
 
-- Current issue : spark web UI 접근이 불가능 함 (ERR_ADD ...)
+- Current issue : spark web UI 접근이 불가능 함
+  - 
