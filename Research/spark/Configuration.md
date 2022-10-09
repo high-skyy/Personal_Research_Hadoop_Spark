@@ -49,6 +49,8 @@
   - The address of the Spark history server.
   - This address is given to the YARN ResourceManager when the Spark application finishes to link the application from the ResourceManager UI to the Spark history server UI.
 
+## 
+
 ## Reference
 - [Reference](https://spark.apache.org/docs/latest/configuration.html#yarn)
 - [Reference](https://spidyweb.tistory.com/300)
