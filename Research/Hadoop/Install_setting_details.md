@@ -1,8 +1,11 @@
 # Install_setting_details 
 
-## Network
+## Security 설정
+- Selinux : disabled
+- firewall 내리기
+  - firewall-cmd --state : not running
 
-## Hadoop 에서의 설정
+## Hadoop 에서의 Network 설정
 - Adapter1: NAT adapter는 guestOS(새로 생성한 가상서버)가 HostOS(Local PC의 OS)의 IP를 통해 외부 인터넷에 연결을 해준다.
   - 하지만 guestOS간의 통신이 불가능하다.
 - Adapter2: Host 전용 Adapter -> 외부 인터넷과는 단절되어 있지만 구축한 guest OS 간의 통신이 가능하다.
