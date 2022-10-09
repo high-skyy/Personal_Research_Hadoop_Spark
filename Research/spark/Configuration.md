@@ -49,7 +49,35 @@
   - The address of the Spark history server.
   - This address is given to the YARN ResourceManager when the Spark application finishes to link the application from the ResourceManager UI to the Spark history server UI.
 
-## 
+## port forwarding
+> 실제 외부 network과의 연결로 datanode에 정보를 주거나 할 필요가 없기 때문에 현재 environment에서 HOST IP는 크게 중요하지 않다.
+
+- namenode
+
+| name     |protocol|host IP|host port|guest ip|guest port|
+|:---------|:---|:---|:---|:---|:---|
+| namenode |TCP|127.0.0.1|9870|192.168.56.100|9870|
+| ssh      |TCP|127.0.0.1|22|192.168.56.100|22|
+
+- rmnode
+
+| name                |protocol|host IP| host port  |guest ip|guest port|
+|:--------------------|:---|:---|:-----------|:---|:---|
+| datanode            |TCP|127.0.0.1| 9864       |192.168.56.101|9864|
+| nodemanager         |TCP| | 8042       |192.168.56.101|8089|
+| secondary namenode  |TCP| | 9870       |192.168.56.101|9870|
+| spark history server|TCP|127.0.0.1| 18080      |192.168.56.101|18080|
+| spark UI            |TCP|127.0.0.1| 4040       |192.168.56.101|4040|
+| ssh                 |TCP| | 22         |192.168.56.101|22|
+| yarn                |TCP|127.0.0.1| 8088       |192.168.56.101|8088|
+| yarn history        |TCP| | 19888      |192.168.56.101|19888|
+
+- datanode1 & datanode2
+
+| name     |protocol|host IP| host port  |guest ip|guest port|
+|:-----------|:---|:-------------|:-----------|:---|:---|
+| datanode |TCP|127.0.0.1| 9864       |192.168.56.102|9864|
+| ssh      |TCP|         | 8042       |192.168.56.102|8042|
 
 ## Reference
 - [Reference](https://spark.apache.org/docs/latest/configuration.html#yarn)
