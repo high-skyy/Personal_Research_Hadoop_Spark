@@ -1,4 +1,2 @@
 # Research for project
-## Hadoop
-## SPARK
-## ZooKeeper
+## Hadoop, SPARK, ZooKeeper
