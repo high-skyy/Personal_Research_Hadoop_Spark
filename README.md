@@ -28,7 +28,7 @@
 <h3 align="center">Personal Research</h3>
 
   <p align="center">
-    Efficient join methods for big-data using Hadoop
+    Efficient join methods for big-data using Hadoop & Spark
   </p>
 </div>
 
