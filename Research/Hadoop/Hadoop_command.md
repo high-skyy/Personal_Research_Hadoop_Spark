@@ -4,6 +4,22 @@
 시스템과의 상호작용은 hadoop 이라는 명령어를 통해서 합니다. 만약 터미널을 열고, 인자 없이 명령어를 실행하면 도움말이 나옵니다.
 > 대부분 rmdir cat linux와 비슷한데 앞에 -만 붙여주면 된다.
 
+## Hadoop daemon starting sequence
+```
+zk      $ ./bin/zkServer.sh start   (namenode1, rmnode1, datanode1)
+hadoop  $ hd/hdfs zkfc -formatZK    (namenode1)
+hadoop  $ hd/hdfs --daemon start journalnode (namenode1, rmnode1, datanode1)
+hadoop  $ hadoop namenode -format (namenode1)
+hadoop  $ hd/hdfs --daemon start namenode (namenode1)
+hadoop  $ hd/hdfs --daemon start zkfc   (active한 namenode : namenode1)
+hadoop  $ hdfs --workers --daemon start datanode  (namenode1)
+hadoop  $ hd/hdfs namenode -bootstrapStandby    (rmnode1)
+hadoop  $ hd/hdfs --daemon start namenode   (rmnode1)
+hadoop  $ hd/hdfs --daemon start zkfc   (rmnode1)
+hadoop  $ hd/yarn --daemon start resourcemanager (rmnode1)
+hadoop  $ hd/yarn --daemon start nodemanager    (rmnode1)
+```
+
 ## Hadoop Startup
 > Hadoop cluster를 시작하기 위해서는 HDFS와 YARN cluster가 모두 필요하다.
 
