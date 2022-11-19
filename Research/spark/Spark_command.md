@@ -1,5 +1,17 @@
 # Spark_command
 
+## Before starting
+```
+# make directory for sparklog
+hadoop  $ hdfs dfs -mkdir /user/hadoop/sparklog     # personal settings
+
+# job history server
+hadoop  $ hd/mapred --daemon start historyserver
+
+# spark history server
+hadoop  $ spark/sbin/start-history-server.sh
+```
+
 ```
 $ start-master.sh         # apache spark master 시작하기
 $ start-worker.sh spark://hostname:port
