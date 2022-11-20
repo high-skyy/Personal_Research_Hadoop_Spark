@@ -10,6 +10,8 @@ hadoop  $ hd/mapred --daemon start historyserver
 
 # spark history server
 hadoop  $ spark/sbin/start-history-server.sh
+
+        $ spark-submit --master yarn --deploy-mode cluster /home/hadoop/pyspark_ETL_parquet.py
 ```
 
 ```
