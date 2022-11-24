@@ -67,6 +67,7 @@ When joining spatial data (intersects, within ...) the original methods supporte
 2. Make a new column for the specific value of space.
 3. Join the tables using the shuffle hash join or shuffle-merge join.
 4. Load intermediate results to the main memory and select the records that satisfy the condition.
+5. Return the records as a result.
 
 <!-- PROGRESS -->
 ## Progress
