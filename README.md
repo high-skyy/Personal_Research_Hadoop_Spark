@@ -28,7 +28,7 @@
 <h3 align="center">Personal Research</h3>
 
   <p align="center">
-    Efficient join methods for big-data using Hadoop & Spark
+    Efficient join method for big-data using Hadoop & Spark
   </p>
 </div>
 
@@ -51,7 +51,7 @@
 - Installation of Hadoop in virtual Environment
 - Implementation of existing methods in virtual environment
 - Implementation of new method in virtual environment
-- Implementation of new method using cloud resources
+- Implementation of new method using cloud resources (if possible)
 - Testing efficiency
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -60,8 +60,65 @@
 <!-- PROGRESS -->
 ## Progress
 
-### Research of Hadoop
-- HDFS
+### Study of Frameworks
+- Hadoop
+<details>
+  <summary>Details</summary>
+- Hadoop brief information (Hadoop_brief.md)
+  - Modes (Stand alone, Pseudo-distributed, Fully-distributed)
+  - Hadoop Cluster concept & Cluster Architecture
+- Hadoop commands (Hadoop_command.md)
+- Hadoop Streaming (Hadoop_Streaming.md)
+- About HDFS (HDFS.md)
+  - Data flow
+  - Read flow
+  - Architecture
+  - How it works
+- Configuration (Install_setting_configuration_details.md)
+  - Network
+  - core-site.xml, hdfs-site.xml, yarn-site.xml
+- MR (MR.md)
+- Yarn (Yarn.md)
+  - Resource Manager
+  - Scheduler
+  - Application Manager
+  - Node Manager
+- Temp (Temporary file for clarification) (Temp.md)
+</details>
+- ZooKeeper
+<details>
+  <summary>Details</summary>
+- Configuration (Configuration.md)
+- Brief information & feature (Explanation.md)
+- Failover (Failover.md)
+  - QJM
+  - ZKFailover Controller process
+</details>
+- Spark
+<details>
+  <summary>Details</summary>
+- Configuration (Configuration.md)
+- Join methods (Join methods.md)
+  - Broadcast Hash Join
+  - Shuffle hash join
+  - Shuffle sort-merge join
+  - Broadcast nested loop join
+- Driver & Executer (Driver & Executer.md)
+- Spark API Frequently Used (Spark_API_Frequently_Used.md)
+- Spark command (Spark command.md)
+- Spark information (spark_information_concept.md)
+  - Architecture
+  - Cluster manager
+  - RDD
+</details>
+- Modules
+<details>
+  <summary>Details</summary>
+- Pandas (geopandas/geopandas functions.md & Pandas Functions/Pandas Function.md)
+- Pyspark_modules (Spark SQL/Core class.md, Spark Session.md, temp.md)
+- Pyspark test_files (test_pyspark)
+</details>
+
   - Data flow
   - Read flow
   - Hadoop cluster brief information & Architecture
@@ -71,8 +128,8 @@
   - Brief explanation
   - map-reduce 시스템 구성
   - concept
-- Hadoop commands
-- Yarn
+- Hadoop_command.md
+
   - 구성요소
 
 ### Installation of Hadoop(Pseudo-distributed mode)
