@@ -62,7 +62,7 @@
 ### Idea
 When joining spatial data (intersects, within ...) the original methods supported by Spark are not adequate. For example shuffle hash join or shuffle-merge join. By classifying the spatial data into many sets that have a specific value, shuffle hash join or shuffle-merge join could be applicable. After joining the spatial data the amount of data will shrink. The shrinked data then could be loaded to the main memory and be selected using orginal functions for spatial joins.
 
-### Implementation
+### Implementation Steps
 1. Divide the space where the spatial data resides and give the divided space a specific value.
 2. Make a new column for the specific value of space.
 3. Join the tables using the shuffle hash join or shuffle-merge join.
