@@ -39,7 +39,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#idea">Idea</a></li>
+    <li><a href="#my-method">My Method</a></li>
     <li><a href="#progress">Progress</a></li>
   </ol>
 </details>
