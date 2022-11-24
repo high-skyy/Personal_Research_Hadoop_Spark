@@ -39,6 +39,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#idea">Idea</a></li>
     <li><a href="#progress">Progress</a></li>
   </ol>
 </details>
@@ -55,6 +56,10 @@
 - Testing efficiency
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- MY METHOD -->
+## My Method
+
+### 
 
 
 <!-- PROGRESS -->
@@ -133,34 +138,10 @@
   
 </details>
 
-  - Data flow
-  - Read flow
-  - Hadoop cluster brief information & Architecture
-  - HDFS 파일 저장 방식과 조회 방식
-- Hadoop mode settings
-- Map-Reduce
-  - Brief explanation
-  - map-reduce 시스템 구성
-  - concept
-- Hadoop_command.md
-
-  - 구성요소
-
 ### Installation of Hadoop(Pseudo-distributed mode)
-
-- Installation of Hadoop
-  - Error
-    <details>
-    <li></li>
-    </details>
-- Hadoop-Streaming
-  - 
-  - Error
-    <details>
-    <li>error : 2022-09-19 21:10:49,010 WARN hdfs.DataStreamer: DataStreamer Exception org.apache.hadoop.ipc.RemoteException(java.io.IOException): File /user/wordcountPJ/shakespeare/histories/kingrichardiii._COPYING_ could only be written to 0 of the 1 minReplication nodes. There are 0 datanode(s) running and 0 node(s) are excluded in this oper...</li>
-    <li>해결 : /tmp 에 들어가서 전 파일 삭제하고 -> hadoop namenode -format 시키면 됨</li>
-    </details>
-
+### Installation of Hadoop(Fully-distributed mode in virtual environment)
+### Simple test using join methods currently used in Spark
+### Implementation of new join method (Currently in progress)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
