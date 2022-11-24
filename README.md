@@ -65,6 +65,11 @@
 <!-- PROGRESS -->
 ## Progress
 
+### Study of Basic Knowledge During Progress
+- Learned_basics (Directory : Learned_basics)
+  - Network
+  - OS
+
 ### Study of Frameworks
 - Hadoop
 <details>
@@ -138,10 +143,27 @@
   
 </details>
 
+### My Environment
+- Host OS : Windows 10 Pro
+- RAM : 16.0 (GB)
+- Virtual machine : VirtualBox
+- Guest OS : centOS7
+- Hadoop
+- Zookeeper
+- Spark
+- jdk
+
 ### Installation of Hadoop(Pseudo-distributed mode)
+> Complete
+
 ### Installation of Hadoop(Fully-distributed mode in virtual environment)
+> Complete
+
 ### Simple test using join methods currently used in Spark
+> Complete
+
 ### Implementation of new join method (Currently in progress)
+> Complete
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
