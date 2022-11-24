@@ -64,6 +64,7 @@
 - Hadoop
 <details>
   <summary>Details</summary>
+  
 - Hadoop brief information (Hadoop_brief.md)
   - Modes (Stand alone, Pseudo-distributed, Fully-distributed)
   - Hadoop Cluster concept & Cluster Architecture
@@ -84,19 +85,27 @@
   - Application Manager
   - Node Manager
 - Temp (Temporary file for clarification) (Temp.md)
+  
 </details>
+
 - ZooKeeper
+
 <details>
   <summary>Details</summary>
+  
 - Configuration (Configuration.md)
 - Brief information & feature (Explanation.md)
 - Failover (Failover.md)
   - QJM
   - ZKFailover Controller process
+  
 </details>
+
 - Spark
+
 <details>
   <summary>Details</summary>
+  
 - Configuration (Configuration.md)
 - Join methods (Join methods.md)
   - Broadcast Hash Join
@@ -110,13 +119,18 @@
   - Architecture
   - Cluster manager
   - RDD
+  
 </details>
+
 - Modules
+
 <details>
   <summary>Details</summary>
+  
 - Pandas (geopandas/geopandas functions.md & Pandas Functions/Pandas Function.md)
 - Pyspark_modules (Spark SQL/Core class.md, Spark Session.md, temp.md)
 - Pyspark test_files (test_pyspark)
+  
 </details>
 
   - Data flow
