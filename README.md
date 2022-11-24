@@ -168,8 +168,8 @@
 ### Simple test using join methods currently used in Spark
 > Complete
 
-### Implementation of new join method (Currently in progress)
-> Complete
+### Implementation of new join method
+> Currently in progress
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
