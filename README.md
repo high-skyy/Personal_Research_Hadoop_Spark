@@ -59,7 +59,9 @@
 <!-- MY METHOD -->
 ## My Method
 
-### 
+### Idea
+
+### Implementation
 
 
 <!-- PROGRESS -->
