@@ -49,7 +49,7 @@
 ## Roadmap
 
 - Research of Hadoop
-- Installation of Hadoop in virtual Environment
+- Installation of Hadoop in virtual environment
 - Implementation of existing methods in virtual environment
 - Implementation of new method in virtual environment
 - Implementation of new method using cloud resources (if possible)
@@ -60,20 +60,20 @@
 ## My Method
 
 ### Idea
-When joining spatial data (intersects, within ...) the original methods supported by Spark are not adequate. For example shuffle hash join or shuffle-merge join. By classifying the spatial data into many sets that have a specific value, shuffle hash join or shuffle-merge join could be applicable. The amount of records that need to be calculated by complicated functions used for spatial join are expected to decrease. After joining the spatial data by shuffle hash join or shuffle-merge join the shrinked data then could be loaded to the main memory and be selected using orginal functions for spatial joins.
+When joining spatial data (intersects, within ...), the original methods supported by Spark are not adequate (e.g., shuffle hash join or shuffle sort-merge join). By classifying the spatial data into many sets that have a specific value, shuffle hash join or shuffle sort-merge join could be applicable. The amount of records that need to be calculated by complicated functions used for spatial join are expected to decrease. After joining the spatial data by shuffle hash join or shuffle sort-merge join the data then could be loaded into the main memory and be selected using original functions for spatial joins.
 
 ### Implementation Steps
 1. Divide the space where the spatial data resides and give the divided space a specific value.
 2. Make a new column for the specific value of space.
-3. Join the tables using the shuffle hash join or shuffle-merge join.
-4. Load intermediate results to the main memory and select the records that satisfy the condition.
+3. Join the tables using the shuffle hash join or shuffle sort-merge join.
+4. Load intermediate results into the main memory and select the records that satisfy the condition.
 5. Return the records as a result.
 
 <!-- PROGRESS -->
 ## Progress
 
 ### Study of Basic Knowledge During Progress
-- Learned_basics (Directory : Learned_basics)
+- Learned basics (Directory : Learned_basics)
   - Network
   - OS
 
@@ -162,7 +162,7 @@ When joining spatial data (intersects, within ...) the original methods supporte
 - Hadoop
 - Zookeeper
 - Spark
-- jdk
+- JDK
 
 ### Installation of Hadoop(Pseudo-distributed mode)
 > Complete
