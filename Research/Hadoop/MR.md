@@ -63,6 +63,11 @@ Example (10TB file)
 - TaskTracker : DataNode에서 실행되는 데몬이고, 사용자고 설정한 map-reduce program을 실행하며  
 JobTracker로부터 작업을 요청받고 요청받은 맵과 리듀스 개수만큼 맵 task와 reduce task를 생성.
 
+## 단점
+Batch의 형태만 가능하다. Data를 Streaming 하면서 넣어 줄 수 없다.
+> Data의 끝이 없으면 Reducer가 시작할 수 없다. 반드시 map phase가 끝나야 시작할 수 있다.
+
 ## Reference
 - [Reference](https://www.geeksforgeeks.org/hadoop-mapreduce-data-flow/)
 - [Reference](https://opentutorials.org/course/2908/17055)
+- [Reference](https://stackoverflow.com/questions/1217850/streaming-data-and-hadoop-not-hadoop-streaming)
