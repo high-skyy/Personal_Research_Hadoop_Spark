@@ -1,16 +1,16 @@
 # HDFS
 
-## Dataflow
+## Write flow (파일 저장)
 ![data flow](https://user-images.githubusercontent.com/105041834/190895957-24752832-3e5b-4bbf-a744-cd1673b050b1.jpg)  
 [출처](https://opentutorials.org/course/2908/17055)  
 1. APP가 HDFS 클라이언트에게 파일 저장을 요청하면, 
 -> HDFS 클라이언트는 네임노드에게 파일 블록들이 저장될 경로 생성을 요청
 -> name node는 해당 파일 경로가 존재하지 않으면 경로를 생성한 후, 다른 클라이언트가 해당 경로를 수정하지 못하도록 락을 검.
 -> 그 후, 네임노드는 클라이언트에게 해당 파일 블록들을 저장할 데이터 노드의 목록을 반환
-2. 클라이언트는 첫 번째 노드에게 데이터 전송 -> 두 번째 데이터 노드로 전송 -> 세번 째 data node로 전송 
+2. 클라이언트는 첫 번째 노드에게 데이터 전송 -> 두 번째 데이터 노드로 전송 -> 세번 째 data node로 전송 (본인의 local에 저장.)
 3. ACK다 받아내면 블록 위치를 NameNode에게 알려주고 client에게도 알려준다.
 
-## Read flow
+## Read flow (파일 읽기)
 ![Read flow](https://user-images.githubusercontent.com/105041834/190896134-484f5338-ff01-4fc9-9afd-41e394550124.jpg)  
 [출처](https://opentutorials.org/course/2908/17055)  
 1. APP이 client에게 파일 읽기를 요청
@@ -40,11 +40,13 @@
 ![HDFS_@](https://user-images.githubusercontent.com/105041834/190892414-dcd5a546-3ead-4d71-b20a-cf9fe73df9ab.jpg)  
 [출처](https://12bme.tistory.com/153?category=737765)  
 
+- file이 block의 크기보다 작은 경우
+
 File이 64MB 또는 128MB의 block으로 분할 될 때, file이 block의 크기보다 작은 경우에는 block 크기 전체를 사용하지 않게 됩니다.  
 Block들은 Hadoop configuration에 설정된 디렉터리를 통해 저장됩니다.  
-NameNode의 metadata를 사용하지 않으면, HDFS에 접근할 수 있는 방법이 존재하지 않습니다.  
+NameNode의 metadata를 사용하지 않으면, HDFS를 통해 접근할 수 있는 방법이 존재하지 않습니다.  
 
-- 클라이언트 어플리케이션이 file에 접근하는 경우 : 
+- 클라이언트 어플리케이션이 file에 접근하는 경우
 NameNode와 통신하여 file을 구성하고 있는 block들의 정보와 DataNode의 Block의 위치 정보를 제공받습니다.  
 이후 데이터를 읽기 위해 DataNode와 직접 통신을 하게 됩니다. **결과적으로 읽기 작업만 일어나는 NameNode는 bottleneck이 되지 않습니다.**
 
@@ -63,12 +65,11 @@ HDFS 접근하는 방법에는 Shell 커맨드라인을 사용하거나 Java API
 NameNode daemon은 반드시 항상 실행되고 있어야 합니다. 만약, NameNode가 중단되면, 클러스터는 접근이 불가능합니다.  
 따라서 고가용성 모드 2개의 네임 노드를 구성(Active와 Standby)를 하기도 합니다.  
 일반적인 Classic mode에서는 1개의 네임노드와 또 다른 "helper" 노드는 SecondaryNameNode로 구성됩니다.  
-이때, helper 노드는 백업 목적이 아니며, 네임노드를 복사할 수 있는 정보를 가지고 있는 PC입니다. 따라서 장애 발생시 NameNode를 대신하는 것이 불가능합니다.
 
 ### 추가사항
 - 한번 저장한 데이터는 수정할 수 없고, 읽기만 가능해서 데이터 무결정성 유지
-- 데이터 수정은 불가능 하지만 파일이동, 삭제, 복할 수 있는 인터페이스를 제공
-- 데이터 노드는 주기적으로 네임노드에서 블록 리포트를 전송하고 이를 통해 네임노드는 데이터 노드가 정사 작동하는지 확인.
+- 데이터 수정은 불가능 하지만 파일이동, 삭제, 복사할 수 있는 인터페이스를 제공
+- 데이터 노드는 주기적으로 네임노드에서 블록 리포트를 전송하고 이를 통해 네임노드는 데이터 노드가 정상 작동하는지 확인.
 
 ## Reference
 - [Reference](https://opentutorials.org/course/2908/17055)
