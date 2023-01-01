@@ -1,36 +1,36 @@
 # Zookeeper 
 > A Distributed Coordination Service for Distributed Applications
 
-Zookeeper is a distributed, open-source coordination service for distributed applications
-
+Zookeeper is a distributed, open-source coordination service for distributed applications.
 
 It exposes a simple set of primitives(기초 요소) that distributed applications can build(컴파일 된 코드를 실제 실행할 수 있는 상태로 만드는 일 / 전처리 + 컴파일 + 패키징 + 테스팅 + 배포)
 upon to implement higher level services for synchronization, configuration(Components are arranged to make up the computer system) maintenance, groups and naming
 > 분산된 app들을 위한 기본적인 요소들의 set로 higher level service를 가능하게 동기화(연결) 기본적인 세팅을 가능하게 해준다.
 
 Coordination services are notoriously hard to get right.
-Thye are expecially prone to errors such as race conditions and deadlock.
+They are especially prone to errors such as race conditions and deadlock.
 The motivation behind Zookeeper is to relieve distributed applications the responsibility of implementing coordination services from scratch.
-> Coordination servic의 경우는 race condition이나 deadlock등에 취약하다. zookeeper는 이것을 해결하기 위해 만들었음
+> Coordination service 의 경우는 race condition 이나 deadlock 등에 취약하다. zookeeper는 이것을 해결하기 위해 만들었음
 
 ## 용어
 - Session : temporary and interactive information interchange between two or more computing devices.
 
 ## Design goals
 ### Simple
-Zookeeper allows distributed processes to coordinate with each other through a shared hierarchical namespace which is organized similarly to a standard file system.
+Zookeeper allows distributed processes to coordinate with each other through a shared **hierarchical** namespace which is organized similarly to a standard file system.
 The namespace consists of data registers - called znodes, in ZooKeeper parlance(말투) - and these are similar to files and directories.
 > 주키퍼는 process들이 공유된 계층화 namespace (일반적인 file system이랑 비슷함)를 통해 서로 coordinate를 가능하게 한다.
 
 Zookeeper data is kept in-memory, which means ZooKeeper can achieve high throughput and low latency numbers
 The performance aspects of ZooKeeper means it can be used in large, distributed systems.
-Ther reliability aspects keep it from being a single point of failure.
+The reliability aspects keep it from being a single point of failure.
 The strict ordering means that sophisticated synchronization primitives can be implemented at the client.
 > strict order가 있기 때문에 client가 정교한 synchronization 요소들을 구현할 수 있다.
 
 ### Replicated
 Like the distributed processes it coordinates, Zookeeper itself is intended to be replicated over a set of hosts called an ensemble.
 > 분산된 process들 처럼 zookeeper 자체가 host여러 명에게 동일하게 복사가된다. -> enseble이라고 한다.
+
 ![zookeeper_1](https://user-images.githubusercontent.com/105041834/193509197-7584789e-7f45-4672-807f-d15dd4233a12.JPG)
 
 The servers that make up the ZooKeeper service must all know about each other.
@@ -45,7 +45,7 @@ If the TCP connections to the server breaks, the client will connect to a differ
 
 ### Ordered
 ZooKeeper stamps each update with a number that reflects the order of all Zookeeper transactions.
-> **매우 중요** Zookeeper는 일반적으로 모든 업데이트에 대해서 번호를 부과한다. -> 이 번호는 ZooKeeper의 transaction의 모든 순서를 보여준다. (디버깅할 때 매우 필요할 것 같다.)
+> **매우 중요** Zookeeper는 일반적으로 모든 업데이트에 대해서 번호를 부과한다. -> 이 번호는 ZooKeeper의 transaction의 모든 순서를 보여준다. (복구할 때 매우 필요할 것 같다.)
 
 Subsequent operations can use the order to implement higher-level abstractions, such as synchronization primitives
 
