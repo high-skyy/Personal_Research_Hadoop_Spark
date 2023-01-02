@@ -3,10 +3,14 @@
 ## enp0s3와 enp0s8
 - VirtualBox를 통해 생성할 가상 서버의 네트워크 디바이스 : enp0s3, enp0s8
 
-## NAT
-- NAT is the process of reassigning the single IP address space into a further one by altering the network address data in the IP header of the datapacket while they are traveling through a network towrads the destination node.
+## NAT (Network Address Translation)
+- NAT is the process of reassigning the single IP address space into a further one
+by altering the network address data in the IP header of the datapacket while they
+are traveling through a network towards the destination node.
 > NAT는 IP 주소를 다른 걸로 바꿔주는 역할을 한다.
-- Generaly, NAT works on a router or gateway and interconnects two networks witch each other by translating the private addresses into the registered addresses before the data being transmitted to another network
+- Generaly, NAT works on a router or gateway and interconnects two networks with
+each other by translating the private
+addresses into the registered addresses before the data being transmitted to another network
 > NAT는 보통 router와 gateway에서 작용을 하는데 private address를 registered address(설정된 주소)로 바꿔주는 역할을 한다.
 - 실제 IPv4에서 사용하는 주소가 많지 않아 NAT를 사용하게 되었음
 - NAT is introduced and widely deployed everywhere which permits a network device like a router(or gateway) to behave as an agent between the Internet and the private network.
