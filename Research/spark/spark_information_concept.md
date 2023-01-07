@@ -52,6 +52,9 @@
 
 
 ### RDD (Resilient Distributed Dataset)
+> Immutable distributed collection of elements of your data. partitioned across nodes in 
+> your cluster. -> API를 통해 transformation과 action이 가능하다.
+
 - 오류 자동복구 기능이 포함된 가상의 리스트
 - cluster내에서 데이터를 처리
 - 다양한 계산(map, reduce, count, fileter, join)을 수행할 수 있으며, 메모리에 저장
