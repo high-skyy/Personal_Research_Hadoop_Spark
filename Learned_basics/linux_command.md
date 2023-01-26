@@ -28,6 +28,11 @@ as the regular expression
 
 > grep 명령어는 해당 파일에 특정한 pattern 을 찾아준다. 이 때 이 pattern 은 정규식을 따른다.
 
+## jps
+- Java Virtual Machine Process Status Tool
+  - The jps tool lists the instrumented HotSpot Java Virtual Machines (JVMs) on the target system. The tool is limited to reporting information on JVMs for which it has the access permissions.
+
+> JPS 의 경우에는 JVM을 출력 시켜 준다.
 
 ## 압축 및 해제 정리
 [참고](https://brownbears.tistory.com/161)
@@ -194,3 +199,4 @@ V나 v키로 접근하며 일반적으로 여러행을 선택할 때 주로 사�
 ## Reference
 - [Reference](https://m.blog.naver.com/zbqmgldjfh/222086097819)
 - [Reference](https://www.geeksforgeeks.org/grep-command-in-unixlinux/)
+- [Reference](https://docs.oracle.com/javase/7/docs/technotes/tools/share/jps.html)
