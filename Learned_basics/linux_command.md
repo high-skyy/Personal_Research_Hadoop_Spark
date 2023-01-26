@@ -21,6 +21,14 @@ chmod OGW file이름
 # Owner, Group, World / 앞부터 차례대로 8진법 / OGW 앞에 +면 추가 -면 제거
 ```
 
+## grep
+The grep filter searches a file for a particular pattern of characters, and displays all
+lines that contain that patter. The pattern that is searched in the file is referred to
+as the regular expression
+
+> grep 명령어는 해당 파일에 특정한 pattern 을 찾아준다. 이 때 이 pattern 은 정규식을 따른다.
+
+
 ## 압축 및 해제 정리
 [참고](https://brownbears.tistory.com/161)
 
@@ -184,4 +192,5 @@ V나 v키로 접근하며 일반적으로 여러행을 선택할 때 주로 사�
 - q! : 강제 종료(저장안함)
 
 ## Reference
-[Reference](https://m.blog.naver.com/zbqmgldjfh/222086097819)
+- [Reference](https://m.blog.naver.com/zbqmgldjfh/222086097819)
+- [Reference](https://www.geeksforgeeks.org/grep-command-in-unixlinux/)

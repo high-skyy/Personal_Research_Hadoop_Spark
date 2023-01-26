@@ -24,6 +24,10 @@ The /etc directory is contained in the root directory. It stores storage system 
   - Files executed at login or startup time by the BASH.
   - Allow the system administrator to set global defaults for all users.
   - Users can also create individual copies of these in their home directory to personalize their environment
+    - Bash is a command processor that typically runs in a text window where the user types commands that cause actions. Bash can also read and execute commands from a file called a shell script
+
+> Bash 는 command language 이다. Command 를 처리해 주고 shell script 라는 파일을 읽거나 명령을 실행할 수 있다.
+
 - /etc/hosts
   - Just an address and a host name.
   - [Reference](https://unix.stackexchange.com/questions/421491/what-is-the-purpose-of-etc-hosts)
